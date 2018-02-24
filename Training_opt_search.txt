@@ -1,0 +1,129 @@
+The MNIST database has a training set of 60000 examples.
+The MNIST database has a test set of 10000 examples.
+
+
+OPTIMIZERS:
+    Optimizer: SGD Train accuracy: 93.4400% Test accuracy: 93.5900%
+    Optimizer: RMSprop Train accuracy: 99.3733% Test accuracy: 98.2500%
+    Optimizer: Adagrad Train accuracy: 99.4300% Test accuracy: 98.2100%
+    Optimizer: Adadelta Train accuracy: 99.1817% Test accuracy: 98.0400%
+    Optimizer: Adam Train accuracy: 99.2633% Test accuracy: 98.1100%
+    Optimizer: Adamax Train accuracy: 99.3833% Test accuracy: 98.1500%
+    Optimizer: Nadam Train accuracy: 99.1683% Test accuracy: 97.8900%
+
+
+EPOCHS & BATCH SIZE:
+    Epochs: 10 Batch_size: 16 Train accuracy: 99.1350% Test accuracy: 98.0500%
+    Epochs: 10 Batch_size: 32 Train accuracy: 99.2067% Test accuracy: 98.1100%
+    Epochs: 10 Batch_size: 64 Train accuracy: 99.2500% Test accuracy: 98.1100%
+    Epochs: 10 Batch_size: 128 Train accuracy: 99.3067% Test accuracy: 98.1000%
+    Epochs: 10 Batch_size: 256 Train accuracy: 99.3667% Test accuracy: 97.9400%
+    Epochs: 10 Batch_size: 512 Train accuracy: 99.4083% Test accuracy: 98.1800%
+
+WEIGHT INITIALIZATION:
+Initilization: uniform Train accuracy: 98.8433% Test accuracy: 97.7500%
+Initilization: lecun_uniform Train accuracy: 99.2533% Test accuracy: 98.2100%
+Initilization: normal Train accuracy: 99.0867% Test accuracy: 97.9400%
+Initilization: zero Train accuracy: 11.2367% Test accuracy: 11.3500%
+Initilization: glorot_normal Train accuracy: 99.2400% Test accuracy: 98.1900%
+Initilization: glorot_uniform Train accuracy: 99.0750% Test accuracy: 97.8500%
+Initilization: he_normal Train accuracy: 98.9867% Test accuracy: 97.9300%
+Initilization: he_uniform Train accuracy: 99.1217% Test accuracy: 98.0000%
+
+HYPERPARAMETER SEARCH:
+Lr: 0.05736133418878747 Dropout: 0.5449812295133124 Train accuracy: 10.4417% Test accuracy: 10.2800%
+Lr: 0.007847627435074556 Dropout: 0.24257723550940002 Train accuracy: 97.0550% Test accuracy: 96.2400%
+Lr: 0.008981634591084024 Dropout: 0.9870205674378718 Train accuracy: 11.2367% Test accuracy: 11.3500%
+Lr: 0.30253140164986647 Dropout: 0.169066244336791 Train accuracy: 10.4417% Test accuracy: 10.2800%
+Lr: 0.0166879174326763 Dropout: 0.6436353773545667 Train accuracy: 83.4033% Test accuracy: 83.8300%
+Lr: 0.0053167056708464016 Dropout: 0.5137726200218177 Train accuracy: 97.0367% Test accuracy: 96.0900%
+Lr: 0.03876013420328953 Dropout: 0.19941663019392955 Train accuracy: 9.9150% Test accuracy: 10.0900%
+Lr: 0.2626329520617007 Dropout: 0.35742985456986825 Train accuracy: 10.2183% Test accuracy: 10.1000%
+--
+Focus on this for a fine search:
+Lr: 0.0023404634314222175 Dropout: 0.13893816609611936 Train accuracy: 99.1183% Test accuracy: 97.9000%
+--
+Lr: 0.014551534323549218 Dropout: 0.25032602295493295 Train accuracy: 95.5550% Test accuracy: 95.0800%
+Lr: 0.5322164183938526 Dropout: 0.11018758697606222 Train accuracy: 9.7367% Test accuracy: 9.8200%
+Lr: 0.2626636101964562 Dropout: 0.1107585957288496 Train accuracy: 9.7517% Test accuracy: 9.7400%
+Lr: 0.0027185005173730684 Dropout: 0.17480580073295035 Train accuracy: 98.8900% Test accuracy: 97.7400%
+Lr: 0.0038917533637942052 Dropout: 0.33617907034788 Train accuracy: 98.1817% Test accuracy: 97.0100%
+Lr: 0.09741138265354016 Dropout: 0.10929835902818491 Train accuracy: 9.9300% Test accuracy: 10.3200%
+Lr: 0.00800519890492572 Dropout: 0.2054183054075027 Train accuracy: 97.9183% Test accuracy: 96.8700%
+--
+Focus on this for a fine search:
+Lr: 0.0031750628557534323 Dropout: 0.12657445626724442 Train accuracy: 99.0000% Test accuracy: 97.6200%
+--
+Lr: 0.09003050988270195 Dropout: 0.7669263733828225 Train accuracy: 9.8717% Test accuracy: 9.8000%
+Lr: 0.09455706096504551 Dropout: 0.16413467814004568 Train accuracy: 9.0350% Test accuracy: 8.9200%
+--
+Focus on this for a fine search:
+Lr: 0.001149425858633365 Dropout: 0.11824121641297834 Train accuracy: 99.1683% Test accuracy: 97.7100%
+--
+Lr: 0.005844861168124654 Dropout: 0.20170005951410633 Train accuracy: 98.2167% Test accuracy: 97.0900%
+Lr: 0.09025987159590813 Dropout: 0.6045248685547825 Train accuracy: 9.7517% Test accuracy: 9.7400%
+Lr: 0.6123833771742347 Dropout: 0.12967312576893206 Train accuracy: 9.7517% Test accuracy: 9.7400%
+Lr: 0.02375048720321729 Dropout: 0.5238655386747393 Train accuracy: 9.8633% Test accuracy: 9.5800%
+Lr: 0.02755936311528207 Dropout: 0.587265420959605 Train accuracy: 19.6800% Test accuracy: 19.4800%
+--
+Focus on this for a fine search:
+Lr: 0.0015648986920308444 Dropout: 0.19173625472169759 Train accuracy: 99.1967% Test accuracy: 97.7700%
+Lr: 0.0012108805377564814 Dropout: 0.2709770308273548 Train accuracy: 99.2417% Test accuracy: 97.9400%
+--
+Lr: 0.0806483072310981 Dropout: 0.4264137249056414 Train accuracy: 9.9300% Test accuracy: 10.3200%
+Lr: 0.005774620395350714 Dropout: 0.1479786680091814 Train accuracy: 98.6033% Test accuracy: 97.4000%
+Lr: 0.015728367674498294 Dropout: 0.10372601339912718 Train accuracy: 96.2200% Test accuracy: 95.6600%
+Lr: 0.41138381249624895 Dropout: 0.16496345440965626 Train accuracy: 9.9300% Test accuracy: 10.3200%
+Lr: 0.13458280832022107 Dropout: 0.3297619344683339 Train accuracy: 9.9150% Test accuracy: 10.0900%
+Lr: 0.603685242131312 Dropout: 0.1863529551196678 Train accuracy: 9.9300% Test accuracy: 10.3200%
+Lr: 0.06514051382332858 Dropout: 0.5891145480920149 Train accuracy: 9.7517% Test accuracy: 9.7400%
+Lr: 0.0062141901278763125 Dropout: 0.14595057202900352 Train accuracy: 98.1117% Test accuracy: 96.9200%
+Lr: 0.1551474233191302 Dropout: 0.3010912783630953 Train accuracy: 9.0350% Test accuracy: 8.9200%
+Lr: 0.32196160292749265 Dropout: 0.21419018760938616 Train accuracy: 10.4417% Test accuracy: 10.2800%
+Lr: 0.9173383928513786 Dropout: 0.15305526010908838 Train accuracy: 9.8717% Test accuracy: 9.8000%
+Lr: 0.07253736375838937 Dropout: 0.5923249959640137 Train accuracy: 9.7517% Test accuracy: 9.7400%
+Lr: 0.006249863132775817 Dropout: 0.7595232442914075 Train accuracy: 92.2283% Test accuracy: 92.0800%
+Lr: 0.13246417213155964 Dropout: 0.20035222137606679 Train accuracy: 9.7517% Test accuracy: 9.7400%
+Lr: 0.011446877298279664 Dropout: 0.9453986364330934 Train accuracy: 17.8233% Test accuracy: 18.1900%
+Lr: 0.059060879011837084 Dropout: 0.31017667634876 Train accuracy: 9.7517% Test accuracy: 9.7400%
+Lr: 0.14438423174287285 Dropout: 0.706403825804405 Train accuracy: 9.8633% Test accuracy: 9.5800%
+Lr: 0.06756133389434418 Dropout: 0.3406215871867649 Train accuracy: 9.9300% Test accuracy: 10.3200%
+--
+Focus on this for a fine search:
+Lr: 0.0020931764757676084 Dropout: 0.32646436011077573 Train accuracy: 99.0267% Test accuracy: 97.8800%
+Lr: 0.0018081997601063773 Dropout: 0.15284522582325824 Train accuracy: 98.9517% Test accuracy: 97.6800%
+--
+Lr: 0.14859672425971568 Dropout: 0.19535880527147198 Train accuracy: 11.2367% Test accuracy: 11.3500%
+Lr: 0.002351425198573501 Dropout: 0.39730774347080594 Train accuracy: 98.9483% Test accuracy: 97.7500%
+Lr: 0.08550354726676739 Dropout: 0.22369019928727302 Train accuracy: 9.7517% Test accuracy: 9.7400%
+Lr: 0.010668021902599906 Dropout: 0.5536138817946293 Train accuracy: 93.5950% Test accuracy: 93.3100%
+Lr: 0.022657742767392915 Dropout: 0.36386762485312596 Train accuracy: 15.4767% Test accuracy: 15.6400%
+Lr: 0.018204717337788487 Dropout: 0.1392209235178356 Train accuracy: 9.9300% Test accuracy: 10.3200%
+--
+Focus on this for a fine search:
+Lr: 0.00177325783952413 Dropout: 0.43479980282185104 Train accuracy: 99.0300% Test accuracy: 97.9300%
+--
+Lr: 0.17379122067127264 Dropout: 0.6350180437789624 Train accuracy: 9.9150% Test accuracy: 10.0900%
+Lr: 0.04645927698303395 Dropout: 0.18419664787092 Train accuracy: 10.2183% Test accuracy: 10.1000%
+Lr: 0.018538972319748978 Dropout: 0.7895213561808074 Train accuracy: 44.5200% Test accuracy: 44.3200%
+Lr: 0.08552382607519583 Dropout: 0.42273115770756525 Train accuracy: 10.2183% Test accuracy: 10.1000%
+Lr: 0.9048012447779482 Dropout: 0.15781651067119468 Train accuracy: 9.0350% Test accuracy: 8.9200%
+Lr: 0.03399103155598354 Dropout: 0.13516623136781322 Train accuracy: 9.9300% Test accuracy: 10.3200%
+Lr: 0.04090570349037122 Dropout: 0.1877786522560905 Train accuracy: 9.7367% Test accuracy: 9.8200%
+Lr: 0.003912101232626483 Dropout: 0.42248018818485866 Train accuracy: 98.4033% Test accuracy: 97.4500%
+Lr: 0.02956309981560203 Dropout: 0.49803032251547197 Train accuracy: 9.8717% Test accuracy: 9.8000%
+Lr: 0.06465313398040998 Dropout: 0.1742601055683904 Train accuracy: 9.7517% Test accuracy: 9.7400%
+Lr: 0.06289845381381898 Dropout: 0.28484547632247287 Train accuracy: 9.0350% Test accuracy: 8.9200%
+Lr: 0.514115735023987 Dropout: 0.6425671431229701 Train accuracy: 9.9300% Test accuracy: 10.3200%
+Lr: 0.4951761683309672 Dropout: 0.35244301557415736 Train accuracy: 9.0350% Test accuracy: 8.9200%
+Lr: 0.02835757444090318 Dropout: 0.8749287127318894 Train accuracy: 16.4150% Test accuracy: 17.6000%
+Lr: 0.11623318118329398 Dropout: 0.27297054244365154 Train accuracy: 10.2183% Test accuracy: 10.1000%
+Lr: 0.6444311991112028 Dropout: 0.15105142661859336 Train accuracy: 9.9150% Test accuracy: 10.0900%
+Lr: 0.07191742950746004 Dropout: 0.6244925121570456 Train accuracy: 11.2367% Test accuracy: 11.3500%
+Lr: 0.0088321564944172 Dropout: 0.17155168931766027 Train accuracy: 97.8700% Test accuracy: 96.8300%
+Lr: 0.2323287920141131 Dropout: 0.28179421860090437 Train accuracy: 9.8717% Test accuracy: 9.8000%
+--
+Focus on this for a more fine search:
+Lr: 0.0020915556588208387 Dropout: 0.12747083256796476 Train accuracy: 99.1550% Test accuracy: 97.9000%
+--
+Lr: 0.03999858312511543 Dropout: 0.48781500222227936 Train accuracy: 9.9150% Test accuracy: 10.0900%

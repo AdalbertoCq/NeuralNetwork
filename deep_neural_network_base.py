@@ -1,8 +1,6 @@
 import numpy as np
 import math
 import matplotlib.pyplot as plt
-import sys
-sys.path.append('/Users/aclaudioquiros/Documents/PycCharm/Neural Network Python/')
 from nn_utils import *
 
 
