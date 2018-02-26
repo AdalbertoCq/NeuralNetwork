@@ -71,7 +71,7 @@ y_train = np_utils.to_categorical(y_train, num_classes=10)
 checkpointer = ModelCheckpoint(filepath='/Users/aclaudioquiros/Documents/PycCharm/Neural Network Python/mnist.model.best.hdf5',  verbose=1, save_best_only=True)
 
 '''
-Intent of this piece of code is to see the impact of the different optimizations, weigth initalization and batch sizes for the same NN architecture.
+Intent of this piece of code is to see the impact of the different optimizations, weight initialization and batch sizes for the same NN architecture.
 '''
 loss_histories = dict()
 # Impact of different optimizers, how far can they reach for the same number of epochs and learning rate.
@@ -79,19 +79,22 @@ optimizers = ['SGD', 'RMSprop', 'Adagrad', 'Adadelta', 'Adam', 'Adamax', 'Nadam'
 for opt in optimizers:
     # Model definition.
     model = define_model(0.2, opt, 'he_normal', 0.002)
-    hist = model.fit(X_train, y_train, batch_size=128, epochs=25, validation_split=0.2, verbose=0, shuffle=True)
+    hist = model.fit(X_train, y_train, batch_size=128, epochs=50, validation_split=0.2, verbose=0, shuffle=True)
     loss_histories[opt] = hist
     plot = plt.plot(hist.epoch, hist.history['loss'], label=opt)
     # evaluate test accuracy
-    score_train = model.evaluate(X_train, y_train, verbose=0)
+    score_train = model.eva2luate(X_train, y_train, verbose=0)
     score_test = model.evaluate(X_test, y_test, verbose=0)
     accuracy_train = 100*score_train[1]
     accuracy_test = 100*score_test[1]
     # print test accuracy
     print('Optimizer: %s Train accuracy: %.4f%% Test accuracy: %.4f%%' % (opt, accuracy_train, accuracy_test))
 # Need to plot the loss trend, this will show how fast the different optimizations impact the learning curve.
+plt.title('Loss function: categorical_crossentropy')
+plt.xlabel('Epochs')
 plt.legend(optimizers)
 plt.show()
+exit()
 
 
 # batch sizes and epochs
