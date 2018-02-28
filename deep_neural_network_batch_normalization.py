@@ -75,24 +75,14 @@ class NeuralNetwork(dnn.NeuralNetwork):
     def nn_backwards(self, Y):
         # Computing L.
         AL = self.cache['A%s' % str(self.num_layers)]
+        Z = self.cache['Z%s' % str(self.num_layers)]
         W = self.parameters['W%s' % str(self.num_layers)]
         G = self.parameters['G%s' % str(self.num_layers)]
         activation_layer = self.activations[self.num_layers]
-        if activation_layer == 'softmax':
-            A_prev = self.cache['A%s' % str(self.num_layers - 1)]
-            dZ = AL - Y
-            dW_temp = np.dot(dZ, A_prev.T)/float(A_prev.shape[1])
-            db_temp = np.sum(dZ, axis=1, keepdims=True)/float(A_prev.shape[1])
-            dA_prev_temp = np.dot(W.T, dZ)
-        elif activation_layer == 'sigmoid':
-            dAL = -np.divide(Y, AL) + np.divide(1-Y, 1-AL)
-            self.grads['dA%s' % str(self.num_layers)] = dAL
-            Z = self.cache['Z%s' % str(self.num_layers)]
-            Y = self.cache['Y%s' % str(self.num_layers)]
-            dA_prev_temp, dG_temp, db_temp, dW_temp = self.linear_backwards(dAL, self.cache['A%s' % str(self.num_layers-1)], Y, Z, G, W, activation_layer)
-        else:
-            print('Last activation function not comteplated: %s' % activation_layer)
-            exit(1)
+        A_prev = self.cache['A%s' % str(self.num_layers - 1)]
+        dZ, dG_temp, db_temp = self.normalize_backwards(AL - Y, Z, G)
+        dW_temp = np.dot(dZ, A_prev.T)/float(A_prev.shape[1])
+        dA_prev_temp = np.dot(W.T, dZ)
         self.grads['dA%s' % str(self.num_layers - 1)] = dA_prev_temp
         self.grads['dG%s' % str(self.num_layers)] = dG_temp
         self.grads['dB%s' % str(self.num_layers)] = db_temp

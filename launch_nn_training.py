@@ -30,9 +30,5 @@ images_test = normalize(images_test)
 
 layer_dim = [images.shape[0], 40, labels.shape[0]]
 activations = [None, 'relu', 'softmax']
-max_count = 100
-for count in range(0, max_count):
-    lambda_reg = 10**np.random.uniform(-5, 2)
-    lr = 10**np.random.uniform(-3, 0)
-    deep_nn = NeuralNetwork(layer_dim, activations, learning_rate=lr, num_iterations=10, mini_batch_size=1024, lambda_reg=lambda_reg)
-    deep_nn.train_set(images, labels, images_test, labels_test, print_cost=False)
+deep_nn = NeuralNetwork(layer_dim, activations, learning_rate=lr, num_iterations=10, mini_batch_size=1024, lambda_reg=lambda_reg)
+deep_nn.train_set(images, labels, images_test, labels_test, print_cost=False)
