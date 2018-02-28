@@ -43,18 +43,26 @@ class NeuralNetwork(dnn.NeuralNetwork):
             self.cache['A%s' % l], self.cache['Y%s' % l], self.cache['Z%s' % l] = self.linear_forward(self.cache['A%s' % str(l-1)], G, B, W, activation_layer)
 
     def normalize_backwards(self, dY, Z, G):
-        m = Z.shape[1]
+        m = float(Z.shape[1])
+        mean = np.mean(Z, axis=1, keepdims=True)
         var = np.var(Z, axis=1, keepdims=True)
-        std = 1. / np.sqrt(var + self.eps_norm)
-        Z_norm = normalize(Z, self.eps_norm)
-        dB = np.sum(dY, axis=1, keepdims=True) / m
-        dG = np.sum(dY * Z_norm, axis=1, keepdims=True) / m
+        std = 1./np.sqrt(var + self.eps_norm)
+
         dZ_norm = dY * G
-        dZ = (1. / m) * std * (m * dZ_norm - np.sum(dZ_norm, axis=1, keepdims=True) - Z_norm * np.sum(dZ_norm * Z_norm, axis=1, keepdims=True))
+        Z_norm = normalize(Z, self.eps_norm)
+        first_term = m * dZ_norm
+        second_term = np.sum(dZ_norm, axis=1, keepdims=True)
+        third_term_a = (Z - mean) * (np.power(std, 2))
+        third_term_b = np.sum(dZ_norm * (Z - mean), axis=1, keepdims=True)
+        third_term = third_term_a * third_term_b
+        dZ = (1./m) * std * (first_term - second_term - third_term)
+        dG = np.sum(dY * Z_norm, axis=1, keepdims=True)/m
+        dB = np.sum(dY, axis=1, keepdims=True)/m
+
         return dZ, dG, dB
 
     def linear_backwards(self, dA, A_prev, Y, Z, G, W, activation):
-        m = Z.shape[1]
+        m = float(Z.shape[1])
         if activation == 'relu':
             dY = np.multiply(dA, relu_derivative(Y))
         elif activation == 'sigmoid':
@@ -73,8 +81,8 @@ class NeuralNetwork(dnn.NeuralNetwork):
         if activation_layer == 'softmax':
             A_prev = self.cache['A%s' % str(self.num_layers - 1)]
             dZ = AL - Y
-            dW_temp = np.dot(dZ, A_prev.T)/A_prev.shape[1]
-            db_temp = np.sum(dZ, axis=1, keepdims=True)/A_prev.shape[1]
+            dW_temp = np.dot(dZ, A_prev.T)/float(A_prev.shape[1])
+            db_temp = np.sum(dZ, axis=1, keepdims=True)/float(A_prev.shape[1])
             dA_prev_temp = np.dot(W.T, dZ)
         elif activation_layer == 'sigmoid':
             dAL = -np.divide(Y, AL) + np.divide(1-Y, 1-AL)

@@ -21,7 +21,9 @@ layer_dim = [images.shape[0], 40, labels.shape[0]]
 activations = [None, 'relu', 'sigmoid']
 
 deep_nn = NeuralNetwork(layer_dim, activations, learning_rate=0.001, num_iterations=10, mini_batch_size=1024, eps_norm=1e-7)
-deep_nn.gradient_check_nn(images[:, :2], labels[:, :2])
+images = images[:, :3]
+labels = labels[:, :3]
+deep_nn.gradient_check_nn(images, labels)
 
 
 

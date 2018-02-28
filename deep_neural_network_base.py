@@ -62,7 +62,7 @@ class NeuralNetwork():
         else:
             print('Last activation function not comteplated: %s' % self.activations[-1])
             exit(1)
-        cost = np.sum(loss, axis=1, keepdims=True) / Y.shape[1]
+        cost = np.sum(loss, axis=1, keepdims=True) / float(Y.shape[1])
         cost = np.squeeze(cost)
         return cost
 
@@ -73,8 +73,8 @@ class NeuralNetwork():
             dZ = np.multiply(dA, sigmoid_derivative(Z))
         elif activation == 'tanh':
             dZ = np.multiply(dA, tanh_derivative(Z))
-        dW = np.dot(dZ, A_prev.T)/A_prev.shape[1]
-        dB = np.sum(dZ, axis= 1, keepdims=True)/A_prev.shape[1]
+        dW = np.dot(dZ, A_prev.T)/float(A_prev.shape[1])
+        dB = np.sum(dZ, axis= 1, keepdims=True)/float(A_prev.shape[1])
         dA_prev = np.dot(W.T, dZ)
         return dA_prev, dW, dB
 
@@ -84,8 +84,8 @@ class NeuralNetwork():
         W = self.parameters['W%s' % str(self.num_layers)]
         A_prev = self.cache['A%s' % str(self.num_layers - 1)]
         dZ = AL - Y
-        self.grads['dW%s' % str(self.num_layers)] = np.dot(dZ, A_prev.T)/A_prev.shape[1]
-        self.grads['dB%s' % str(self.num_layers)] = np.sum(dZ, axis=1, keepdims=True)/A_prev.shape[1]
+        self.grads['dW%s' % str(self.num_layers)] = np.dot(dZ, A_prev.T)/float(A_prev.shape[1])
+        self.grads['dB%s' % str(self.num_layers)] = np.sum(dZ, axis=1, keepdims=True)/float(A_prev.shape[1])
         self.grads['dA%s' % str(self.num_layers - 1)] = np.dot(W.T, dZ)
 
         # Starts by L-1
