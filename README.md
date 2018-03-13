@@ -1,5 +1,7 @@
 # NeuralNetwork
-NN class in numpy python
+Neural Network implementation in Numpy & Keras. 
+
+This is a brief summary of my own understanding for Regularization, Optimizations and different types of gradient updates.
 
 _**Regularization:**_
 * Techniques to prevent the neural network to over-fit on the training data.
