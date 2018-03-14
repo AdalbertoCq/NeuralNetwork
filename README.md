@@ -3,7 +3,7 @@ Neural Network implementation in Numpy & Keras.
 
 This is a brief summary of my own understanding for: Regularization, Optimizations, Batch Normalization and Gradient updates.
 
-_**Comparison between batch/SGD/mini-batch:**_
+## _**Comparison between batch/SGD/mini-batch:**_
 * Batch:
   * It doesn’t allow on-line training.
   * Slow update.
@@ -18,7 +18,7 @@ _**Comparison between batch/SGD/mini-batch:**_
   * Allows a faster converge to a minima since updates sooner than batch.
   * A good matrix size cam take advantage of different computer architectures for matrix operations.
 
-_**Regularization:**_
+## _**Regularization:**_
 * Techniques to prevent the neural network to overfit on the training data.
 * L2:
   * Forces the weights to take lower values and preventing high standouts for the weight values.
@@ -35,7 +35,7 @@ _**Regularization:**_
   * The objective is to balance the weight values preventing them to fit only on the training set samples and not for the general case.
 
 
-_**Convergence to minima on cost function optimizations:**_
+## _**Convergence to minima on cost function optimizations:**_
 1. Momentum:
     * Uses previous gradients (cost function slopes) to overcome possible local minima valley.
     * Computes a weighted average of previous and current gradient.
@@ -70,7 +70,7 @@ _**Convergence to minima on cost function optimizations:**_
 8. Nadam:
     * TODO
 
-_**Loss function over different optimizations:**_
+## _**Loss function over different optimizations:**_
 * Learning rate = 0.002
 * Epochs = 25
 * Batch size = 128
