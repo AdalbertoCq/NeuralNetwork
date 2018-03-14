@@ -1,24 +1,7 @@
 # NeuralNetwork
 Neural Network implementation in Numpy & Keras. 
 
-This is a brief summary of my own understanding for Regularization, Optimizations and different types of gradient updates.
-
-_**Regularization:**_
-* Techniques to prevent the neural network to over-fit on the training data.
-* L2:
-  * Forces the weights to take lower values and preventing high standouts for the weight values.
-  * Penalizes the Cost function with the median quadratic values for the weights.
-  * Prevents weights to take large values, this helps to generalize features, not giving to much importance to some compare to others:
-    * When the weight is updated, there's a certain weight decay introduced from the gradient of Cost function (Added median quadratic values in cost function).
-
-* L1:
-  * It penalizes the weight with the absolute value.
-  * Same intention as L2, but lower impact.
-
-* Dropout:
-  * Randomly drops activation outputs along the network, only during training and based on a certain probability.
-  * The objective is to balance the weight values preventing them to fit only on the training set samples and not for the general case.
-
+This is a brief summary of my own understanding for: Regularization, Optimizations, Batch Normalization and Gradient updates.
 
 _**Comparison between batch/SGD/mini-batch:**_
 * Batch:
@@ -34,6 +17,23 @@ _**Comparison between batch/SGD/mini-batch:**_
   * With a proper size reduces the variances on the updates.
   * Allows a faster converge to a minima since updates sooner than batch.
   * A good matrix size cam take advantage of different computer architectures for matrix operations.
+
+_**Regularization:**_
+* Techniques to prevent the neural network to overfit on the training data.
+* L2:
+  * Forces the weights to take lower values and preventing high standouts for the weight values.
+  * Penalizes the Cost function with the median quadratic values for the weights.
+  * Prevents weights to take large values, this helps to generalize features, not giving to much importance to some compare to others:
+    * When the weight is updated, there's a certain weight decay introduced from the gradient of Cost function (Added median quadratic values in cost function).
+
+* L1:
+  * It penalizes the weight with the absolute value.
+  * Same intention as L2, but lower impact.
+
+* Dropout:
+  * Randomly drops activation outputs along the network, only during training and based on a certain probability.
+  * The objective is to balance the weight values preventing them to fit only on the training set samples and not for the general case.
+
 
 _**Convergence to minima on cost function optimizations:**_
 1. Momentum:
