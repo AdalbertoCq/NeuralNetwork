@@ -76,4 +76,5 @@ _**Loss function over different optimizations:**_
 * Batch size = 128
 * Dropout prob = 0.2
 * Weight Initialization = He over normal distribution.
-![Loss function over different optimizations:](https://github.com/AdalbertoCq/NeuralNetwork/tree/master/Plots%20%26%20Docs/Optimization_plots.png)
+![Loss Function over different optimizations:](https://github.com/AdalbertoCq/NeuralNetwork/tree/master/Plots%20%26%20Docs/Optimization_plots.png)
+
