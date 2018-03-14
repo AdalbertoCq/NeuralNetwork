@@ -9,6 +9,9 @@ class NeuralNetwork(dnn.NeuralNetwork):
     def __init__(self, layer_dim, activations, learning_rate, num_iterations, mini_batch_size , eps_norm):
         super(NeuralNetwork, self).__init__(layer_dim, activations, learning_rate, num_iterations, mini_batch_size)
         self.eps_norm = eps_norm
+        self.test = True
+        self.mean = None
+        self.variance = None
 
     def initialize_parameters(self):
         # Ranges 1 to num_layers-1
@@ -18,7 +21,7 @@ class NeuralNetwork(dnn.NeuralNetwork):
             self.parameters['B%s' % l] = np.zeros((self.layer_dim[l], 1))
 
     def normalize_forward(self, Z, G, B):
-        Z_norm = normalize(Z, self.eps_norm)
+        Z_norm = normalize(Z, self.eps_norm, self.test, )
         Y = (G*Z_norm) + B
         return Y
 
@@ -107,3 +110,14 @@ class NeuralNetwork(dnn.NeuralNetwork):
             self.parameters['G%s' % l] = self.parameters['G%s' % l] - self.learning_rate*self.grads['dG%s' % l]
             self.parameters['B%s' % l] = self.parameters['B%s' % l] - self.learning_rate*self.grads['dB%s' % l]
 
+
+    def run(self, X, Y, mean, variance):
+        self.test = True
+        self.mean = mean
+        self.variance = variance
+        self.nn_forward(X)
+        accuracy = get_accuracy(self.cache['A%s' % self.num_layers], Y)
+        self.test = False
+        self.mean = None
+        self.variance = None
+        return accuracy

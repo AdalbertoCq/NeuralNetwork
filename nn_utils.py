@@ -47,9 +47,10 @@ def sigmoid_derivative(z):
     return da
 
 
-def normalize(Z, eps_norm=1e-8):
-    mean = np.mean(Z, axis=1, keepdims=True)
-    variance = np.var(Z, axis=1, keepdims=True)
+def normalize(Z, eps_norm=1e-8, test=True, mean=None, variance=None):
+    if test:
+        mean = np.mean(Z, axis=1, keepdims=True)
+        variance = np.var(Z, axis=1, keepdims=True)
     Z_norm = np.divide((Z - mean), np.sqrt(variance+eps_norm))
     return Z_norm
 
