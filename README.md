@@ -18,6 +18,15 @@ This is a brief summary of my own understanding for: Regularization, Optimizatio
 * Allows a faster converge to a minima since updates sooner than batch.
 * A good matrix size cam take advantage of different computer architectures for matrix operations.
 
+## _**Batch Normalization:**_
+* Limits the amount that the distribution can shift affected by weight and bias updates.
+* It weakens the coupling between one layer and the previous one. 
+* Has the same effect as normalizing the inputs, it will control the data distribution from getting really high or really low values through the network. It allows a faster convergence to the minima.
+* Includes a regularization effect since in training the normalization is done through the mini-batch, including some noise that translates in the network activation outputs Z[l]. Similar to Dropout in effect.
+* Mathematical demostration: [Batch Normalization Gradient](https://github.com/AdalbertoCq/NeuralNetwork/blob/master/Plots%20%26%20Docs/batch_norm_backprop.PDF)
+
+
+
 ## _**Regularization:**_
 * Techniques to prevent the neural network to overfit on the training data.
 ### L2:
