@@ -23,6 +23,8 @@ This is a brief summary of my own understanding for: Regularization, Optimizatio
 
 
 ## _**Comparison between batch/SGD/mini-batch:**_
+
+Mathematical demostration: [Backpropagation](https://github.com/AdalbertoCq/NeuralNetwork/blob/master/Plots%20%26%20Docs/backprop.PDF)
 ### Batch:
 * It doesn’t allow on-line training.
 * Slow update.
