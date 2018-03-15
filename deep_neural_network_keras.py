@@ -75,43 +75,43 @@ checkpointer = ModelCheckpoint(filepath='/Users/aclaudioquiros/Documents/PycChar
 # '''
 # loss_histories = dict()
 # # Impact of different optimizers, how far can they reach for the same number of epochs and learning rate.
-# optimizers = ['SGD', 'RMSprop', 'Adagrad', 'Adadelta', 'Adam', 'Adamax', 'Nadam']
-# for opt in optimizers:
-#     # Model definition.
-#     model = define_model(0.2, opt, 'he_normal', 0.002)
-#     hist = model.fit(X_train, y_train, batch_size=128, epochs=50, validation_split=0.2, verbose=0, shuffle=True)
-#     loss_histories[opt] = hist
-#     plot = plt.plot(hist.epoch, hist.history['loss'], label=opt)
-#     # evaluate test accuracy
-#     score_train = model.eva2luate(X_train, y_train, verbose=0)
-#     score_test = model.evaluate(X_test, y_test, verbose=0)
-#     accuracy_train = 100*score_train[1]
-#     accuracy_test = 100*score_test[1]
-#     # print test accuracy
-#     print('Optimizer: %s Train accuracy: %.4f%% Test accuracy: %.4f%%' % (opt, accuracy_train, accuracy_test))
-# # Need to plot the loss trend, this will show how fast the different optimizations impact the learning curve.
-# plt.title('Loss function: categorical_crossentropy')
-# plt.xlabel('Epochs')
-# plt.legend(optimizers)
-# plt.show()
-#
-#
-# # batch sizes and epochs
-# batch_size = [16, 32, 64, 128, 256, 512]
-# epochs = [10, 50, 100]
-# for epoch in epochs:
-#     for bs in batch_size:
-#         # Model definition.
-#         model = define_model(0.2, 'adam', 'he_normal', 0.002)
-#         hist = model.fit(X_train, y_train, batch_size=bs, epochs=epoch, validation_split=0.2, verbose=0, shuffle=True)
-#
-#         # evaluate test accuracy
-#         score_train = model.evaluate(X_train, y_train, verbose=0)
-#         score_test = model.evaluate(X_test, y_test, verbose=0)
-#         accuracy_train = 100 * score_train[1]
-#         accuracy_test = 100 * score_test[1]
-#         # print test accuracy
-#         print('Epochs: %s Batch_size: %s Train accuracy: %.4f%% Test accuracy: %.4f%%' % (epoch, bs, accuracy_train, accuracy_test))
+optimizers = ['SGD', 'RMSprop', 'Adagrad', 'Adadelta', 'Adam', 'Adamax', 'Nadam']
+for opt in optimizers:
+    # Model definition.
+    model = define_model(0.2, opt, 'he_normal', 0.002)
+    hist = model.fit(X_train, y_train, batch_size=128, epochs=50, validation_split=0.2, verbose=0, shuffle=True)
+    loss_histories[opt] = hist
+    plot = plt.plot(hist.epoch, hist.history['loss'], label=opt)
+    # evaluate test accuracy
+    score_train = model.eva2luate(X_train, y_train, verbose=0)
+    score_test = model.evaluate(X_test, y_test, verbose=0)
+    accuracy_train = 100*score_train[1]
+    accuracy_test = 100*score_test[1]
+    # print test accuracy
+    print('Optimizer: %s Train accuracy: %.4f%% Test accuracy: %.4f%%' % (opt, accuracy_train, accuracy_test))
+# Need to plot the loss trend, this will show how fast the different optimizations impact the learning curve.
+plt.title('Loss function: categorical_crossentropy')
+plt.xlabel('Epochs')
+plt.legend(optimizers)
+plt.show()
+
+
+# batch sizes and epochs
+batch_size = [16, 32, 64, 128, 256, 512]
+epochs = [10, 50, 100]
+for epoch in epochs:
+    for bs in batch_size:
+        # Model definition.
+        model = define_model(0.2, 'adam', 'he_normal', 0.002)
+        hist = model.fit(X_train, y_train, batch_size=bs, epochs=epoch, validation_split=0.2, verbose=0, shuffle=True)
+
+        # evaluate test accuracy
+        score_train = model.evaluate(X_train, y_train, verbose=0)
+        score_test = model.evaluate(X_test, y_test, verbose=0)
+        accuracy_train = 100 * score_train[1]
+        accuracy_test = 100 * score_test[1]
+        # print test accuracy
+        print('Epochs: %s Batch_size: %s Train accuracy: %.4f%% Test accuracy: %.4f%%' % (epoch, bs, accuracy_train, accuracy_test))
 
 # Weight initialization.
 loss_histories_w = dict()

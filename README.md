@@ -1,6 +1,24 @@
 # NeuralNetwork
 Neural Network implementation in Numpy & Keras. 
 
+The code consists in the following (The idea is that in the future this can be combined, as of now the are used independently): 
+* deep_neural_network_base: Class that will build a MLP based on the input activation functions per layer and number of nodes.
+* deep_neural_network_batch_normalization: Extension of deep_neural_network_base class, that implements batch normalization.
+* deep_neural_network_dropout: Extension of deep_neural_network_base class that implements dropout for training and inference.
+* deep_neural_network_l2regularization: Extension of deep_neural_network_base class that implements L2 regularization.
+* deep_neural_network_optimized: Extension of deep_neural_network_base class that given the following options for gradient update:
+    * Momentum.
+    * Nag: pending.
+    * Adagrad.
+    * RMSprop.
+    * Adadelta.
+    * Adam.
+    * Adamax.
+    * Nadam: pending.
+    
+* launch_nn_training: Code to test out the implementation on MNIST data.
+* deep_neural_network_keras: Keras implementation of an MLP for MNIST, used to do a comprehensive analysis on the explanations below.
+
 This is a brief summary of my own understanding for: Regularization, Optimizations, Batch Normalization and Gradient updates.
 
 
