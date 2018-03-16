@@ -102,8 +102,7 @@ This is a brief summary of my own understanding for: Regularization, Optimizatio
     * TODO
 
 ## _**Loss function over different optimizations:**_
-![Loss function over different optimizations](https://github.com/AdalbertoCq/NeuralNetwork/tree/master/Plots_n_Docs/Optimization_plots.png)
-
+<img src="https://github.com/AdalbertoCq/NeuralNetwork/tree/master/Plots_n_Docs/Optimization_plots.png"/>
 
 * Learning rate = 0.002
 * Epochs = 25
