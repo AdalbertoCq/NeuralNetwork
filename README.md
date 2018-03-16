@@ -102,10 +102,12 @@ This is a brief summary of my own understanding for: Regularization, Optimizatio
     * TODO
 
 ## _**Loss function over different optimizations:**_
+![Loss Function over different optimizations](NeuralNetwork/tree/master/Plots_n_Docs/Optimization_plots.png)
+
 * Learning rate = 0.002
 * Epochs = 25
 * Batch size = 128
 * Dropout prob = 0.2
 * Weight Initialization = He over normal distribution.
 
-![Loss Function over different optimizations:](https://github.com/AdalbertoCq/NeuralNetwork/tree/master/Plots_n_Docs/Optimization_plots.png)
+
