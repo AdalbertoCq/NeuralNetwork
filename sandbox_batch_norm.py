@@ -29,10 +29,10 @@ images_test = normalize(images_test)
 
 layer_dim = [images.shape[0], 125, 40, labels.shape[0]]
 activations = [None, 'relu', 'relu', 'softmax']
-deep_nn = NeuralNetwork(layer_dim, activations, learning_rate=0.2, num_iterations=100, mini_batch_size=256, eps_norm=1e-8)
+deep_nn = NeuralNetwork(layer_dim, activations, learning_rate=0.2, num_iterations=1000, mini_batch_size=256, eps_norm=1e-8)
 deep_nn.train_set(images, labels)
 
 mean = np.mean(np.concatenate((images, images_test), axis=1))
 var = np.var(np.concatenate((images, images_test), axis=1))
-test_accuracy = deep_nn.run(images_test, labels_test)
+test_accuracy = deep_nn.run(images_test, labels_test, mean, var)
 print('Test accuracy: %s' % test_accuracy)
