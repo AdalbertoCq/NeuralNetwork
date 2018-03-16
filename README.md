@@ -108,4 +108,4 @@ This is a brief summary of my own understanding for: Regularization, Optimizatio
 * Dropout prob = 0.2
 * Weight Initialization = He over normal distribution.
 
-![Loss Function over different optimizations:](https://github.com/AdalbertoCq/NeuralNetwork/tree/master/Plots%20%26%20Docs/Optimization_plots.png)
+![Loss Function over different optimizations:](https://github.com/AdalbertoCq/NeuralNetwork/tree/master/Plots_n_Docs/Optimization_plots.png)
