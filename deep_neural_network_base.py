@@ -83,10 +83,18 @@ class NeuralNetwork():
         AL = self.cache['A%s' % str(self.num_layers)]
         W = self.parameters['W%s' % str(self.num_layers)]
         A_prev = self.cache['A%s' % str(self.num_layers - 1)]
-        dZ = AL - Y
-        self.grads['dW%s' % str(self.num_layers)] = np.dot(dZ, A_prev.T)/float(A_prev.shape[1])
-        self.grads['dB%s' % str(self.num_layers)] = np.sum(dZ, axis=1, keepdims=True)/float(A_prev.shape[1])
-        self.grads['dA%s' % str(self.num_layers - 1)] = np.dot(W.T, dZ)
+        if self.activations[-1] == 'softmax':
+            dZ = AL - Y
+            dW = np.dot(dZ, A_prev.T)/float(A_prev.shape[1])
+            dB = np.sum(dZ, axis=1, keepdims=True)/float(A_prev.shape[1])
+            dA_prev = np.dot(W.T, dZ)
+        else:
+            Z = self.parameters['Z%s' % str(self.num_layers)]
+            dAL = - (1./AL.shape[1])*np.divide(Y,AL)
+            dA_prev, dW, dB = self.linear_backwards(self, dAL, A_prev, Z, W, self.activations[-1])
+        self.grads['dW%s' % str(self.num_layers)] = dW
+        self.grads['dB%s' % str(self.num_layers)] = dB
+        self.grads['dA%s' % str(self.num_layers - 1)] = dA_prev
 
         # Starts by L-1
         for l in reversed(range(1, self.num_layers)):

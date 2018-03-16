@@ -42,6 +42,33 @@ class NeuralNetwork(dnn.NeuralNetwork):
         dA_prev = np.dot(W.T, dZ)
         return dA_prev, dW, dB
 
+    def nn_backwards(self, Y):
+        # Computing L.
+        AL = self.cache['A%s' % str(self.num_layers)]
+        W = self.parameters['W%s' % str(self.num_layers)]
+        A_prev = self.cache['A%s' % str(self.num_layers - 1)]
+        if self.activations[-1] == 'softmax':
+            dZ = AL - Y
+            dW = np.dot(dZ, A_prev.T)/float(A_prev.shape[1]) + (self.lambda_reg/A_prev.shape[1])*W
+            dB = np.sum(dZ, axis=1, keepdims=True)/float(A_prev.shape[1])
+            dA_prev = np.dot(W.T, dZ)
+        else:
+            Z = self.parameters['Z%s' % str(self.num_layers)]
+            dAL = - (1./AL.shape[1])*np.divide(Y,AL)
+            dA_prev, dW, dB = linear_backwards(self, dAL, A_prev, Z, W, self.activations[-1])
+        self.grads['dW%s' % str(self.num_layers)] = dW
+        self.grads['dB%s' % str(self.num_layers)] = dB
+        self.grads['dA%s' % str(self.num_layers - 1)] = dA_prev
+
+        # Starts by L-1
+        for l in reversed(range(1, self.num_layers)):
+            W = self.parameters['W%s' % l]
+            Z = self.cache['Z%s' % l]
+            dA_prev_temp, dW_temp, db_temp = self.linear_backwards(self.grads['dA%s' % str(l)], self.cache['A%s' % str(l - 1)], Z, W, self.activations[l])
+            self.grads['dA%s' % str(l-1)] = dA_prev_temp
+            self.grads['dW%s' % l] = dW_temp
+            self.grads['dB%s' % l] = db_temp
+
     def train_set(self, X_train, Y_train, X_test, Y_test, print_cost=True):
         self.initialize_parameters()
         costs = list()

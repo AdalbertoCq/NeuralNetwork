@@ -1,11 +1,11 @@
 import numpy as np
-from deep_neural_network_regularization import *
+from deep_neural_network_l2regularization import *
 from nn_utils import *
 from mnist.loader import MNIST
 
 
 # Loading data.
-db = '/Users/aclaudioquiros/Documents/neural_netwoks/Data/MNIST_database/'
+db = '/Users/aclaudioquiros/Documents/NN Data/Data/MNIST_database/'
 mndata = MNIST(db)
 images, labels = mndata.load_training()
 images_test, labels_test = mndata.load_testing()
@@ -30,5 +30,5 @@ images_test = normalize(images_test)
 
 layer_dim = [images.shape[0], 40, labels.shape[0]]
 activations = [None, 'relu', 'softmax']
-deep_nn = NeuralNetwork(layer_dim, activations, learning_rate=lr, num_iterations=10, mini_batch_size=1024, lambda_reg=lambda_reg)
-deep_nn.train_set(images, labels, images_test, labels_test, print_cost=False)
+deep_nn = NeuralNetwork(layer_dim, activations, learning_rate=0.002, num_iterations=10000, mini_batch_size=1024, lambda_reg=0.2)
+deep_nn.train_set(images, labels, images_test, labels_test, print_cost=True)

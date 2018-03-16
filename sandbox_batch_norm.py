@@ -5,7 +5,7 @@ from mnist.loader import MNIST
 
 
 # Loading data.
-db = '/Users/aclaudioquiros/Documents/neural_netwoks/Data/MNIST_database/'
+db = '/Users/aclaudioquiros/Documents/NN Data/Data/MNIST_database/'
 mndata = MNIST(db)
 images, labels = mndata.load_training()
 images_test, labels_test = mndata.load_testing()
@@ -29,7 +29,7 @@ images_test = normalize(images_test)
 
 layer_dim = [images.shape[0], 125, 40, labels.shape[0]]
 activations = [None, 'relu', 'relu', 'softmax']
-deep_nn = NeuralNetwork(layer_dim, activations, learning_rate=0.02, num_iterations=500, mini_batch_size=256, eps_norm=1e-8)
+deep_nn = NeuralNetwork(layer_dim, activations, learning_rate=0.2, num_iterations=100, mini_batch_size=256, eps_norm=1e-8)
 deep_nn.train_set(images, labels)
 
 mean = np.mean(np.concatenate((images, images_test), axis=1))

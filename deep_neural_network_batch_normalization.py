@@ -83,7 +83,20 @@ class NeuralNetwork(dnn.NeuralNetwork):
         G = self.parameters['G%s' % str(self.num_layers)]
         activation_layer = self.activations[self.num_layers]
         A_prev = self.cache['A%s' % str(self.num_layers - 1)]
-        dZ, dG_temp, db_temp = self.normalize_backwards(AL - Y, Z, G)
+
+        if self.activations[-1] == 'softmax':
+            dY = AL - Y
+        elif self.activations[-1] == 'sigmoid':
+            dAL = - (1. / AL.shape[1]) * np.divide(Y, AL)
+            dY = np.multiply(dAL, sigmoid_derivative(Y))
+        elif self.activations[-1] == 'relu':
+            dAL = - (1. / AL.shape[1]) * np.divide(Y, AL)
+            dY = np.multiply(dAL, relu_derivative(Y))
+        elif self.activations[-1] == 'tanh':
+            dAL = - (1. / AL.shape[1]) * np.divide(Y, AL)
+            dY = np.multiply(dAL, tanh_derivative(Y))
+
+        dZ, dG_temp, db_temp = self.normalize_backwards(dY, Z, G)
         dW_temp = np.dot(dZ, A_prev.T)/float(A_prev.shape[1])
         dA_prev_temp = np.dot(W.T, dZ)
         self.grads['dA%s' % str(self.num_layers - 1)] = dA_prev_temp
