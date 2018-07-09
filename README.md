@@ -26,6 +26,7 @@ This is a brief summary of my own understanding for: Regularization, Optimizatio
 
 * Mathematical demonstration: [Backpropagation](https://github.com/AdalbertoCq/NeuralNetwork/tree/master/Plots_n_Docs/backprop.PDF)
 * Mathematical demonstration: [Cross-entropy & Softmax gradients](https://github.com/AdalbertoCq/NeuralNetwork/tree/master/Plots_n_Docs/cross_entropy_softmax.PDF)
+* Mathematical demonstration: [Batch Normalization Backpropagation](https://github.com/AdalbertoCq/NeuralNetwork/blob/master/Plots_n_Docs/batch_norm_backprop.PDF)
 
 ### Batch:
 * It doesn’t allow on-line training.
